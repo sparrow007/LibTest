@@ -13,6 +13,10 @@ import retrofit2.Response
 
 class RestApiService {
 
+    interface onNetworkResponse {
+        fun onResponse()
+    }
+
      fun calledUser() {
         val retrofit = ServiceBuilder.buildService(RestApi::class.java)
 

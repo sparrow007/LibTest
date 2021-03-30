@@ -13,5 +13,6 @@ class MainActivity : AppCompatActivity() {
 
         //Go inside the method to see result
         apiCall.calledUser()
+
     }
 }
