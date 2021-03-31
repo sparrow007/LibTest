@@ -3,7 +3,7 @@ package com.jackandphantom.libtest.MVP.repository.repoimpl
 import com.jackandphantom.libtest.MVP.repository.entity.News
 import com.jackandphantom.libtest.MVP.repository.NewsRepository
 
-class MemoryRepository : NewsRepository {
+class MemoryRepository() : NewsRepository {
 
     private val newsMap = mutableMapOf<Long, News>()
 
