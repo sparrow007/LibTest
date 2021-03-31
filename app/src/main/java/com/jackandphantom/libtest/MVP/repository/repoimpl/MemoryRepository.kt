@@ -1,7 +1,7 @@
-package com.jackandphantom.libtest.MVP.repository.entity.repoimpl
+package com.jackandphantom.libtest.MVP.repository.repoimpl
 
 import com.jackandphantom.libtest.MVP.repository.entity.News
-import com.jackandphantom.libtest.MVP.repository.entity.NewsRepository
+import com.jackandphantom.libtest.MVP.repository.NewsRepository
 
 class MemoryRepository : NewsRepository {
 

@@ -1,4 +1,6 @@
-package com.jackandphantom.libtest.MVP.repository.entity
+package com.jackandphantom.libtest.MVP.repository
+
+import com.jackandphantom.libtest.MVP.repository.entity.News
 
 interface NewsRepository {
 
