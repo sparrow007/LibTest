@@ -8,6 +8,7 @@ import com.jackandphantom.libtest.MVP.repository.NewsRepository
 import com.jackandphantom.libtest.MVP.repository.repoimpl.MemoryRepository
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 
 @Module
@@ -20,6 +21,7 @@ class AppModules {
     fun getNewsList(newsRepository: NewsRepository): NewsListPresenter = NewsListImpl(newsRepository)
 
     @Provides
+    @Singleton
     fun getNewsRepository() : NewsRepository = MemoryRepository()
 
 }

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.jackandphantom.libtest.MVP.InitApp
 import com.jackandphantom.libtest.MVP.di.DaggerAppComponent
 import com.jackandphantom.libtest.MVP.presenter.NewsDetailsPresenter
 import com.jackandphantom.libtest.MVP.repository.entity.News
@@ -35,7 +36,7 @@ class NewsDetailsFragment : Fragment(), NewsDetailsView {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        DaggerAppComponent.create().inject(this)
+        ( context.applicationContext as InitApp).appComp().inject(this)
     }
 
     override fun onCreateView(
