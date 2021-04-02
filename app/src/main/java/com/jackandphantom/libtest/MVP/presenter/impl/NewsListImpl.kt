@@ -11,7 +11,7 @@ class NewsListImpl (val repository: NewsRepository): BasePresenter<NewsList, New
     NewsListPresenter {
 
     override fun showNewsList() {
-        Log.i("MY TAG", "In NewsListPresenterImpl using Repository $repository")
+        Log.e("MY TAG", "In NewsListPresenterImpl using Repository $repository")
         val newsList = repository.getAllList()
         view?.showsList(newsList)
     }

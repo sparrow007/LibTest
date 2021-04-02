@@ -2,6 +2,7 @@ package com.jackandphantom.libtest.MVP.ui.newslist
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -45,6 +46,7 @@ class NewsListFragment : Fragment(), NewsListView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         newsListPresenter.bind(this)
+        initRecyclerView(view)
     }
 
     override fun onStart() {
@@ -54,12 +56,6 @@ class NewsListFragment : Fragment(), NewsListView {
 
     override fun showsList(list: List<News>) {
         this.newsList = list
-        adapter.notifyDataSetChanged()
-    }
-
-    private fun initRecyclerView(view: View) {
-        recyclerView = view.findViewById(R.id.recycler_view)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
         adapter = NewsListAdapter(newsList) {selectedNews->
 
             val bundle = Bundle().apply {
@@ -67,14 +63,19 @@ class NewsListFragment : Fragment(), NewsListView {
             }
             fragmentManager?.run {
                 beginTransaction()
-                        .replace(R.id.anchor, NewsDetailsFragment.create(bundle))
-                        .addToBackStack(null)
-                        .commit()
+                    .replace(R.id.anchor, NewsDetailsFragment.create(bundle))
+                    .addToBackStack(null)
+                    .commit()
             }
 
         }
 
         recyclerView.adapter = adapter
+    }
+
+    private fun initRecyclerView(view: View) {
+        recyclerView = view.findViewById(R.id.recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
     override fun onDestroy() {
