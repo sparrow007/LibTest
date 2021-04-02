@@ -49,7 +49,6 @@ class NewsDetailsFragment : Fragment(), NewsDetailsView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         newsDetailsPresenter.bind(this)
-
         newsTitleTextView = view.findViewById(R.id.news_detail_title)
         newsBodyTextView = view.findViewById(R.id.news_detail_body)
     }
