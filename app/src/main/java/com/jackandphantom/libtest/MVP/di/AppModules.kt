@@ -16,9 +16,9 @@ import javax.inject.Singleton
  class AppModules (private val repository: NewsRepository) {
 
     @Provides
-    fun getNewsDetails(newsRepository: NewsRepository): NewsDetailsPresenter = NewsDetailsImpl(newsRepository)
+    fun getNewsDetails(): NewsDetailsPresenter = NewsDetailsImpl(repository)
 
     @Provides
-    fun getNewsList(newsRepository: NewsRepository): NewsListPresenter = NewsListImpl(newsRepository)
+    fun getNewsList(): NewsListPresenter = NewsListImpl(repository)
 
 }
