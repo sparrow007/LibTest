@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jackandphantom.libtest.MVP.di.DaggerAppComponent
 import com.jackandphantom.libtest.MVP.presenter.NewsListPresenter
 import com.jackandphantom.libtest.MVP.repository.entity.News
+import com.jackandphantom.libtest.MVP.ui.newsdetails.NewsDetailsFragment
 import com.jackandphantom.libtest.R
 import javax.inject.Inject
 
@@ -59,7 +60,17 @@ class NewsListFragment : Fragment(), NewsListView {
     private fun initRecyclerView(view: View) {
         recyclerView = view.findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter = NewsListAdapter(newsList) {
+        adapter = NewsListAdapter(newsList) {selectedNews->
+
+            val bundle = Bundle().apply {
+                putLong(NewsDetailsFragment.NEWS_ID, selectedNews?.id ?: -1)
+            }
+            fragmentManager?.run {
+                beginTransaction()
+                        .replace(R.id.anchor, NewsDetailsFragment.create(bundle))
+                        .addToBackStack(null)
+                        .commit()
+            }
 
         }
 

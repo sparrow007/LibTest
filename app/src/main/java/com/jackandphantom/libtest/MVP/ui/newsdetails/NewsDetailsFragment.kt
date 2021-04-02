@@ -18,6 +18,14 @@ class NewsDetailsFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
+    companion object {
+        const val NEWS_ID = "news_id"
+
+        fun create(bundle: Bundle?): NewsDetailsFragment = NewsDetailsFragment().apply {
+            arguments = bundle
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
