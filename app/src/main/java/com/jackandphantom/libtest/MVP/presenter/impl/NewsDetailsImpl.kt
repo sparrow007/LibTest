@@ -2,6 +2,7 @@ package com.jackandphantom.libtest.MVP.presenter.impl
 
 import android.util.Log
 import com.jackandphantom.common.impl.mvp.BasePresenter
+import com.jackandphantom.libtest.Extraa.MyClass
 import com.jackandphantom.libtest.MVP.model.NewsDetails
 import com.jackandphantom.libtest.MVP.presenter.NewsDetailsPresenter
 import com.jackandphantom.libtest.MVP.repository.NewsRepository
