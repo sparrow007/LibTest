@@ -2,7 +2,9 @@ package com.jackandphantom.libtest.MVP
 
 import android.app.Application
 import com.jackandphantom.libtest.MVP.di.AppComponent
+import com.jackandphantom.libtest.MVP.di.AppModules
 import com.jackandphantom.libtest.MVP.di.DaggerAppComponent
+import com.jackandphantom.libtest.MVP.repository.repoimpl.MemoryRepository
 
 class InitApp : Application() {
 
@@ -10,7 +12,7 @@ class InitApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerAppComponent.create()
+        appComponent = DaggerAppComponent.builder().appModules(AppModules(MemoryRepository())).build()
     }
 
     fun appComp() = appComponent
