@@ -6,13 +6,14 @@ import com.jackandphantom.libtest.MVP.presenter.impl.NewsDetailsImpl
 import com.jackandphantom.libtest.MVP.presenter.impl.NewsListImpl
 import com.jackandphantom.libtest.MVP.repository.NewsRepository
 import com.jackandphantom.libtest.MVP.repository.repoimpl.MemoryRepository
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 
 @Module
-class AppModules {
+ class AppModules (private val repository: NewsRepository) {
 
     @Provides
     fun getNewsDetails(newsRepository: NewsRepository): NewsDetailsPresenter = NewsDetailsImpl(newsRepository)
