@@ -1,5 +1,6 @@
 package com.jackandphantom.libtest.MVP.presenter.impl
 
+import android.util.Log
 import com.jackandphantom.common.impl.mvp.BasePresenter
 import com.jackandphantom.libtest.MVP.model.NewsList
 import com.jackandphantom.libtest.MVP.presenter.NewsListPresenter
@@ -10,6 +11,8 @@ class NewsListImpl (val repository: NewsRepository): BasePresenter<NewsList, New
     NewsListPresenter {
 
     override fun showNewsList() {
-        TODO("Not yet implemented")
+        Log.i("MY TAG", "In NewsListPresenterImpl using Repository $repository")
+        val newsList = repository.getAllList()
+        view?.showsList(newsList)
     }
 }

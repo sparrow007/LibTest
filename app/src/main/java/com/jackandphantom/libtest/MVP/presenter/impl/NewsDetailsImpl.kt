@@ -1,5 +1,6 @@
 package com.jackandphantom.libtest.MVP.presenter.impl
 
+import android.util.Log
 import com.jackandphantom.common.impl.mvp.BasePresenter
 import com.jackandphantom.libtest.MVP.model.NewsDetails
 import com.jackandphantom.libtest.MVP.presenter.NewsDetailsPresenter
@@ -10,7 +11,10 @@ class NewsDetailsImpl (val repository: NewsRepository) : BasePresenter<NewsDetai
  NewsDetailsPresenter{
 
     override fun displayNews(newsId: Long) {
-
+        Log.i("MY TAG", "In NewsDetailPresenterImpl using Repository $repository")
+        repository.byId(newsId)?.let { news ->
+            view?.displayNews(news)
+        }
     }
 
 }
