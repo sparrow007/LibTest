@@ -2,8 +2,11 @@ package com.jackandphantom.libtest.MVP.repository.repoimpl
 
 import com.jackandphantom.libtest.MVP.repository.entity.News
 import com.jackandphantom.libtest.MVP.repository.NewsRepository
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class MemoryRepository() : NewsRepository {
+@Singleton
+class MemoryRepository @Inject constructor() : NewsRepository {
 
     private val newsMap = mutableMapOf<Long, News>()
 
