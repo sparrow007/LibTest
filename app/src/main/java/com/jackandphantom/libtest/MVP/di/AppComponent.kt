@@ -17,14 +17,9 @@ interface AppComponent {
 
     fun inject(newsDetailsFragment: NewsDetailsFragment)
 
-    @Component.Builder
-    interface Builder {
-
-        @BindsInstance
-        fun repository(repository: NewsRepository) : Builder
-
-        fun build() : AppComponent
-
+    @Component.Factory
+    interface Factory {
+        fun repository(@BindsInstance repository: NewsRepository) : AppComponent
     }
 
 }
