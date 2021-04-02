@@ -6,5 +6,5 @@ import com.jackandphantom.libtest.MVP.ui.newsdetails.NewsDetailsView
 
 interface NewsDetailsPresenter: Presenter<NewsDetails, NewsDetailsView> {
 
-    fun displayNews()
+    fun displayNews(newsId: Long)
 }

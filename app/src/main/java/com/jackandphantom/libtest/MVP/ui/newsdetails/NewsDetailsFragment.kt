@@ -54,8 +54,21 @@ class NewsDetailsFragment : Fragment(), NewsDetailsView {
         newsBodyTextView = view.findViewById(R.id.news_detail_body)
     }
 
-    override fun displayNews(news: News) {
-
+    override fun onStart() {
+        super.onStart()
+        arguments?.getLong(NEWS_ID)?.let { newsId ->
+            newsDetailsPresenter.displayNews(newsId)
+        }
     }
 
+    override fun displayNews(news: News) {
+        newsTitleTextView.text = news.title
+        newsBodyTextView.text = news.body
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        newsDetailsPresenter.unBind()
+    }
 }

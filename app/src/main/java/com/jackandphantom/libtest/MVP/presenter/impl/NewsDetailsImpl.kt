@@ -9,8 +9,8 @@ import com.jackandphantom.libtest.MVP.ui.newsdetails.NewsDetailsView
 class NewsDetailsImpl (val repository: NewsRepository) : BasePresenter<NewsDetails, NewsDetailsView>(),
  NewsDetailsPresenter{
 
-    override fun displayNews() {
-        TODO("Not yet implemented")
+    override fun displayNews(newsId: Long) {
+
     }
 
 }
