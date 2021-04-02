@@ -12,7 +12,7 @@ class InitApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerAppComponent.builder().appModules(AppModules(MemoryRepository())).build()
+        appComponent = DaggerAppComponent.builder().repository(MemoryRepository()).build()
     }
 
     fun appComp() = appComponent

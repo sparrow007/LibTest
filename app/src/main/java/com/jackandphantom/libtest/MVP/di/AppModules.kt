@@ -13,12 +13,12 @@ import javax.inject.Singleton
 
 
 @Module
- class AppModules (private val repository: NewsRepository) {
+ abstract class AppModules {
 
-    @Provides
-    fun getNewsDetails(): NewsDetailsPresenter = NewsDetailsImpl(repository)
+    @Binds
+    abstract fun provideNewsDetails(newsDetailsImpl: NewsDetailsImpl): NewsDetailsPresenter
 
-    @Provides
-    fun getNewsList(): NewsListPresenter = NewsListImpl(repository)
+    @Binds
+    abstract fun provideNewsList(newsListImpl: NewsListImpl): NewsListPresenter
 
 }
