@@ -11,7 +11,7 @@ class NewsDetailsImpl (val repository: NewsRepository) : BasePresenter<NewsDetai
  NewsDetailsPresenter{
 
     override fun displayNews(newsId: Long) {
-        Log.i("MY TAG", "In NewsDetailPresenterImpl using Repository $repository")
+        Log.e("MY TAG", "In NewsDetailPresenterImpl using Repository $repository")
         repository.byId(newsId)?.let { news ->
             view?.displayNews(news)
         }

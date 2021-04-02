@@ -25,10 +25,6 @@ class NewsListFragment : Fragment(), NewsListView {
     private  var newsList: List<News> = emptyList()
     private lateinit var adapter: NewsListAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onAttach(context: Context) {
         DaggerAppComponent.create().inject(this)
