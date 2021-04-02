@@ -1,8 +1,4 @@
-package com.jackandphantom.common.impl
-
-import com.jackandphantom.common.Model
-import com.jackandphantom.common.Presenter
-import com.jackandphantom.common.View
+package com.jackandphantom.common.impl.mvp
 
 abstract class BasePresenter<M: Model, V: View<M>> : Presenter<M, V> {
 

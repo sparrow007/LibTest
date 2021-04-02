@@ -1,4 +1,4 @@
-package com.jackandphantom.common
+package com.jackandphantom.common.impl.mvp
 
 interface Presenter<M: Model, V : View<M>>  {
 
