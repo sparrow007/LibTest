@@ -15,7 +15,6 @@ class RecyclerViewHolder(
     private val mTitleTextView: TextView = itemView.findViewById(R.id.news_title)
     private val mBodyTextView: TextView = itemView.findViewById(R.id.news_body)
 
-
     init {
         listener?.let { l ->
             itemView.setOnClickListener { l(news) }
