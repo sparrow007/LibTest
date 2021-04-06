@@ -13,10 +13,6 @@ import javax.inject.Singleton
 @Singleton
 interface AppComponent {
 
-    fun inject(newsListFragment: NewsListFragment)
-
-    fun inject(newsDetailsFragment: NewsDetailsFragment)
-
     @Component.Factory
     interface Factory {
         fun repository(@BindsInstance repository: NewsRepository) : AppComponent
