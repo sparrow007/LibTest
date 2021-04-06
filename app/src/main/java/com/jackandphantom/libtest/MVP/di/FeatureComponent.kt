@@ -3,11 +3,9 @@ package com.jackandphantom.libtest.MVP.di
 import com.jackandphantom.libtest.MVP.ui.newsdetails.NewsDetailsFragment
 import com.jackandphantom.libtest.MVP.ui.newslist.NewsListFragment
 import dagger.Component
+import dagger.Subcomponent
 
-@Component(
-        modules = [FeatureModule::class],
-        dependencies = [AppComponent::class]
-)
+@Subcomponent(modules = [FeatureModule::class])
 @FeatureScope
 interface FeatureComponent {
 

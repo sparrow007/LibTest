@@ -11,7 +11,6 @@ import android.widget.TextView
 import com.jackandphantom.libtest.MVP.FeatureComponentProvider
 import com.jackandphantom.libtest.MVP.InitApp
 import com.jackandphantom.libtest.MVP.di.DaggerAppComponent
-import com.jackandphantom.libtest.MVP.di.DaggerFeatureComponent
 import com.jackandphantom.libtest.MVP.presenter.NewsDetailsPresenter
 import com.jackandphantom.libtest.MVP.repository.entity.News
 import com.jackandphantom.libtest.R
