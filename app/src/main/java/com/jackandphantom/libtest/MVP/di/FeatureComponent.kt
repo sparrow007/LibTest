@@ -8,6 +8,7 @@ import dagger.Component
         modules = [FeatureModule::class],
         dependencies = [AppComponent::class]
 )
+@FeatureScope
 interface FeatureComponent {
 
     fun inject(newsListFragment: NewsListFragment)

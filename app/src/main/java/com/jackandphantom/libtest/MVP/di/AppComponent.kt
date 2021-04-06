@@ -13,5 +13,6 @@ import javax.inject.Singleton
 @Singleton
 interface AppComponent {
 
+    fun repository(): NewsRepository
 
 }
