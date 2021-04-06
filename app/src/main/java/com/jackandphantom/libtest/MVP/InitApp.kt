@@ -11,7 +11,7 @@ class InitApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerAppComponent.factory().repository(MemoryRepository())
+        appComponent = DaggerAppComponent.create()
     }
 
     fun appComp() = appComponent

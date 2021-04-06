@@ -13,9 +13,5 @@ import javax.inject.Singleton
 @Singleton
 interface AppComponent {
 
-    @Component.Factory
-    interface Factory {
-        fun repository(@BindsInstance repository: NewsRepository) : AppComponent
-    }
 
 }

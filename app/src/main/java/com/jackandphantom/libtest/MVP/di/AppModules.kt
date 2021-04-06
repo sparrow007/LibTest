@@ -15,6 +15,7 @@ import javax.inject.Singleton
 @Module
  abstract class AppModules {
 
-
+     @Binds
+     abstract fun provideRepository(memoryRepository: MemoryRepository): NewsRepository
 
 }
