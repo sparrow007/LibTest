@@ -12,7 +12,7 @@ class NewsListImpl  @Inject constructor(val repository: NewsRepository): BasePre
     NewsListPresenter {
 
     override fun showNewsList() {
-        Log.e("MY TAG", "In NewsListPresenterImpl using Repository $repository")
+       // Log.e("MY TAG", "In NewsListPresenterImpl using Repository $repository")
         val newsList = repository.getAllList()
         view?.showsList(newsList)
     }

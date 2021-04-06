@@ -2,6 +2,7 @@ package com.jackandphantom.libtest.MVP.ui.newsdetails
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -39,6 +40,7 @@ class NewsDetailsFragment : Fragment(), NewsDetailsView {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         (requireContext() as FeatureComponentProvider).get().inject(this)
+        Log.e("MY TAG", "NEWS DEATILS $newsDetailsPresenter")
     }
 
     override fun onCreateView(
