@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.jackandphantom.libtest.MVP.FeatureComponentProvider
 import com.jackandphantom.libtest.MVP.InitApp
 import com.jackandphantom.libtest.MVP.di.DaggerAppComponent
 import com.jackandphantom.libtest.MVP.presenter.NewsListPresenter
@@ -28,7 +29,7 @@ class NewsListFragment : Fragment(), NewsListView {
 
 
     override fun onAttach(context: Context) {
-        ( context.applicationContext as InitApp).appComp().inject(this)
+        (requireContext() as FeatureComponentProvider).get().inject(this)
         super.onAttach(context)
     }
 
