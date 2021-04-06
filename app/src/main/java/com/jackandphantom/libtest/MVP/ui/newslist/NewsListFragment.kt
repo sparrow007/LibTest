@@ -31,6 +31,7 @@ class NewsListFragment : Fragment(), NewsListView {
     override fun onAttach(context: Context) {
         (requireContext() as FeatureComponentProvider).get().inject(this)
         super.onAttach(context)
+        Log.e("MY TAG", "NEWS LIST $newsListPresenter")
     }
 
     override fun onCreateView(
