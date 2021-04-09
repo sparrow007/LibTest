@@ -16,7 +16,7 @@ class MVPActivity : AppCompatActivity(), FeatureComponentProvider {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_m_v_p)
-        supportFragmentManager.beginTransaction().replace(R.id.anchor, NewsListFragment()).commit()
+        //supportFragmentManager.beginTransaction().replace(R.id.anchor, NewsListFragment()).commit()
 
         featureComponent =  (applicationContext as InitApp).appComp().featureComponent()
 
