@@ -54,6 +54,7 @@ dependencies {
 
     // Assertions
     testImplementation 'com.google.truth:truth:1.0.1'
+    androidTestImplementation 'com.google.truth:truth:1.0.1'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     implementation 'com.github.sparrow007:carouselrecyclerview:1.1.0'
