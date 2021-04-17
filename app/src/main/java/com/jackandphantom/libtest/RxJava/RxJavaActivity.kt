@@ -38,6 +38,12 @@ class RxJavaActivity : AppCompatActivity() {
 
         val taskObservable = Observable.fromIterable(DataSource.createTaskList())
                 .subscribeOn(Schedulers.io())
+                .filter {
+
+                    Log.e(TAG, "Subscribe On : "+ Thread.currentThread().name )
+                    Thread.sleep(500)
+                    it.isComplete
+                }
                 .observeOn(AndroidSchedulers.mainThread())
 
         taskObservable.subscribe(object : Observer<Task> {
@@ -46,7 +52,8 @@ class RxJavaActivity : AppCompatActivity() {
             }
 
             override fun onNext(t: Task?) {
-                Log.e(TAG, "onNext: $t")
+                Log.e(TAG, "onNext: ${Thread.currentThread().name}")
+                Log.e(TAG, "onNext: $t ")
             }
 
             override fun onError(e: Throwable?) {
