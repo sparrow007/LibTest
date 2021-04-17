@@ -33,7 +33,6 @@ class RxJavaActivity : AppCompatActivity() {
             observable.subscribe(observer)
         }
 
-
     }
 
     private fun createObservable() {
