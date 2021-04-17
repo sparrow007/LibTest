@@ -12,9 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LibTest">
-        <activity android:name=".RxJava.RxJavaActivity"></activity>
-        <activity android:name=".MainActivity"></activity>
         <activity android:name=".MVP.MVPActivity">
+
+        </activity>
+        <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".RxJava.RxJavaActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
