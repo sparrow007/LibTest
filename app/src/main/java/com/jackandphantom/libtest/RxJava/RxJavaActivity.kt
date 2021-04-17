@@ -2,13 +2,19 @@ package com.jackandphantom.libtest.RxJava
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.jackandphantom.libtest.R
+import com.jackandphantom.libtest.RxJava.model.Task
+import com.jackandphantom.libtest.RxJava.utils.DataSource
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Observer
+import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 class RxJavaActivity : AppCompatActivity() {
 
@@ -19,6 +25,9 @@ class RxJavaActivity : AppCompatActivity() {
     lateinit var observable:Observable<String>
     lateinit var observer: Observer<String>
 
+    companion object {
+        const val TAG = "MY TAG RXJAVA"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rx_java)
@@ -27,11 +36,28 @@ class RxJavaActivity : AppCompatActivity() {
         editText = findViewById(R.id.edit_view)
         button = findViewById(R.id.button)
 
-        createObservable()
+        val taskObservable = Observable.fromIterable(DataSource.createTaskList())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
 
-        button.setOnClickListener {
-            observable.subscribe(observer)
-        }
+        taskObservable.subscribe(object : Observer<Task> {
+            override fun onSubscribe(d: Disposable?) {
+                Log.e(TAG, "onSubscribe: $d")
+            }
+
+            override fun onNext(t: Task?) {
+                Log.e(TAG, "onNext: $t")
+            }
+
+            override fun onError(e: Throwable?) {
+                Log.e(TAG, "onError: ", e)
+            }
+
+            override fun onComplete() {
+                Log.e(TAG, "onComplete: is called")
+            }
+
+        })
 
     }
 
