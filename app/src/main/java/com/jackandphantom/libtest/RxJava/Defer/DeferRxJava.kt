@@ -4,10 +4,8 @@ import io.reactivex.rxjava3.core.Observable
 
 class DeferRxJava {
 
-    lateinit var value: String
+    var value: String = "cccc"
 
-    fun valueObservable(): Observable<String> {
-        return Observable.just(value)
-    }
+    fun valueObservable(): Observable<String> = Observable.defer { Observable.just(value) }
 
 }
