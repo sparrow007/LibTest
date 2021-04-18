@@ -42,6 +42,7 @@ class RxJavaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rx_java)
         recyclerview = findViewById(R.id.recycler_view)
+        initRecyclerview()
         getPostObservable()
             .subscribeOn(Schedulers.io())
             .flatMap {
