@@ -41,6 +41,7 @@ class RxJavaActivity : AppCompatActivity() {
         button = findViewById(R.id.button)
 
         Observable.range(2, 6)
+                .repeat(2)
                 .subscribe(object:Observer<Int>{
                     override fun onSubscribe(d: Disposable?) {
                         Log.d(TAG, "onSubscribe: ")
