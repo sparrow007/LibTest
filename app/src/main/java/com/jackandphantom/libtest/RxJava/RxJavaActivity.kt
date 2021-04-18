@@ -39,14 +39,15 @@ class RxJavaActivity : AppCompatActivity() {
         textView = findViewById(R.id.text_view)
         editText = findViewById(R.id.edit_view)
         button = findViewById(R.id.button)
-
-        Observable.timer(1, TimeUnit.SECONDS)
-                .subscribe(object:Observer<Long>{
+        //Buffer operator
+        Observable.just("a", "b", "c", "d", "e", "f", "g")
+                .buffer(2)
+                .subscribe(object:Observer<List<String>>{
                     override fun onSubscribe(d: Disposable?) {
                         Log.d(TAG, "onSubscribe: ")
                     }
 
-                    override fun onNext(t: Long) {
+                    override fun onNext(t: List<String>) {
                         Log.d(TAG, "onNext: $t")
                     }
 
