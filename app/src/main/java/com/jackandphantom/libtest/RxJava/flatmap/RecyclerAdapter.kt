@@ -55,7 +55,7 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>() {
                 numComments.text = ""
             } else {
                 showProgressBar(false)
-                numComments.setText((post.comments?.size).toString())
+                numComments.text = (post.comments?.size).toString()
             }
         }
 
