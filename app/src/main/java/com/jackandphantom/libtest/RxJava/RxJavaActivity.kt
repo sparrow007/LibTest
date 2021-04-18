@@ -39,6 +39,30 @@ class RxJavaActivity : AppCompatActivity() {
         editText = findViewById(R.id.edit_view)
         button = findViewById(R.id.button)
 
+        Observable.just(arrayOf("a", "b", "c", "d", "e", "f", "g", "h"), arrayOf("ankit", "supercool"))
+                .subscribe(object:Observer<Array<String>>{
+                    override fun onSubscribe(d: Disposable?) {
+                        Log.d(TAG, "onSubscribe: ")
+                    }
+
+                    override fun onNext(t: Array<String>?) {
+                        Log.d(TAG, "onNext: $t")
+                    }
+
+                    override fun onError(e: Throwable?) {
+                        Log.d(TAG, "onError: $e")
+                    }
+
+                    override fun onComplete() {
+                        Log.d(TAG, "onComplete: ")
+                    }
+
+                })
+
+
+    }
+
+    private fun intervalObservable() {
         Observable.interval(1, TimeUnit.SECONDS)
                 .subscribe(object : Observer<Long> {
                     override fun onSubscribe(d: Disposable?) {
@@ -57,7 +81,6 @@ class RxJavaActivity : AppCompatActivity() {
                         Log.d(TAG, "onComplete: ")
                     }
                 })
-
     }
 
     private fun deferObservable() {
