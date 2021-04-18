@@ -16,6 +16,8 @@ import io.reactivex.rxjava3.core.Observer
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
+import kotlin.math.log
 
 class RxJavaActivity : AppCompatActivity() {
 
@@ -37,14 +39,35 @@ class RxJavaActivity : AppCompatActivity() {
         editText = findViewById(R.id.edit_view)
         button = findViewById(R.id.button)
 
+        Observable.interval(1, TimeUnit.SECONDS)
+                .subscribe(object : Observer<Long> {
+                    override fun onSubscribe(d: Disposable?) {
+                        Log.d(TAG, "onSubscribe: ")
+                    }
+
+                    override fun onNext(t: Long?) {
+                        Log.d(TAG, "onNext: $t")
+                    }
+
+                    override fun onError(e: Throwable?) {
+                        Log.d(TAG, "onError: $e")
+                    }
+
+                    override fun onComplete() {
+                        Log.d(TAG, "onComplete: ")
+                    }
+                })
+
+    }
+
+    private fun deferObservable() {
         val defer = DeferRxJava()
         val observValue = defer.valueObservable()
         defer.value = "Ankit"
         observValue.subscribe(System.out::println)
-
     }
 
-    private fun taskObservalble() {
+    private fun taskObservable() {
         val taskObservable = Observable.fromIterable(DataSource.createTaskList())
                 .subscribeOn(Schedulers.io())
                 .filter {
