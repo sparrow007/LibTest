@@ -36,28 +36,11 @@ class RxJavaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rx_java)
 
-        textView = findViewById(R.id.text_view)
-        editText = findViewById(R.id.edit_view)
-        button = findViewById(R.id.button)
 
-        getOriginalObservable().map {
-            it * 2
-        }.subscribe {
-            Log.d(TAG, "onNext $it")
-        }
 
 
     }
 
-    private fun getOriginalObservable(): Observable<Int> {
-        val list = arrayListOf(1,2,3,4,5,6,7,8,9)
 
-        return Observable.create {
-            for (data in list) {
-                it.onNext(data)
-            }
-            it.onComplete()
-        }
-    }
 
 }

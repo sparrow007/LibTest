@@ -144,4 +144,23 @@ private fun createObservable() {
         }
 
     }
+
+     fun mapObservable() {
+//        getOriginalObservable().map {
+//            it * 2
+//        }.subscribe {
+//            Log.d(RxJavaActivity.TAG, "onNext $it")
+//        }
+    }
+
+    fun getOriginalObservable(): Observable<Int> {
+        val list = arrayListOf(1,2,3,4,5,6,7,8,9)
+
+        return Observable.create {
+            for (data in list) {
+                it.onNext(data)
+            }
+            it.onComplete()
+        }
+    }
 }
