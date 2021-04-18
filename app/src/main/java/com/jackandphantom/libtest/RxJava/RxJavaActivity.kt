@@ -16,6 +16,7 @@ import io.reactivex.rxjava3.core.Observer
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.math.log
 
@@ -39,13 +40,13 @@ class RxJavaActivity : AppCompatActivity() {
         editText = findViewById(R.id.edit_view)
         button = findViewById(R.id.button)
 
-        Observable.just(arrayOf("a", "b", "c", "d", "e", "f", "g", "h"), arrayOf("ankit", "supercool"))
-                .subscribe(object:Observer<Array<String>>{
+        Observable.range(2, 6)
+                .subscribe(object:Observer<Int>{
                     override fun onSubscribe(d: Disposable?) {
                         Log.d(TAG, "onSubscribe: ")
                     }
 
-                    override fun onNext(t: Array<String>?) {
+                    override fun onNext(t: Int) {
                         Log.d(TAG, "onNext: $t")
                     }
 
@@ -60,6 +61,28 @@ class RxJavaActivity : AppCompatActivity() {
                 })
 
 
+    }
+
+    private fun justObservable() {
+        Observable.just(arrayOf("a", "b", "c", "d", "e", "f", "g", "h"), arrayOf("ankit", "supercool"))
+                .subscribe(object:Observer<Array<String>>{
+                    override fun onSubscribe(d: Disposable?) {
+                        Log.d(TAG, "onSubscribe: ")
+                    }
+
+                    override fun onNext(t: Array<String>?) {
+                        Log.d(TAG, "onNext: ${Arrays.toString(t)}")
+                    }
+
+                    override fun onError(e: Throwable?) {
+                        Log.d(TAG, "onError: $e")
+                    }
+
+                    override fun onComplete() {
+                        Log.d(TAG, "onComplete: ")
+                    }
+
+                })
     }
 
     private fun intervalObservable() {
