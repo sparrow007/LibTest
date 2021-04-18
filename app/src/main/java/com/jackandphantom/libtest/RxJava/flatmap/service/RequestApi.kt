@@ -13,6 +13,6 @@ interface RequestApi {
     fun getPost(): Observable<List<Post>>
 
     @GET("posts/{id}/comments")
-    fun getComments(@Path("id")id: Int):Observable<Comment>
+    fun getComments(@Path("id")id: Int):Observable<List<Comment>>
 
 }
