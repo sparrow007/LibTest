@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.jackandphantom.libtest.R
+import com.jackandphantom.libtest.RxJava.Defer.DeferRxJava
 import com.jackandphantom.libtest.RxJava.model.Task
 import com.jackandphantom.libtest.RxJava.utils.DataSource
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -36,6 +37,14 @@ class RxJavaActivity : AppCompatActivity() {
         editText = findViewById(R.id.edit_view)
         button = findViewById(R.id.button)
 
+        val defer = DeferRxJava()
+        val observValue = defer.valueObservable()
+        defer.value = "Ankit"
+        observValue.subscribe(System.out::println)
+
+    }
+
+    private fun taskObservalble() {
         val taskObservable = Observable.fromIterable(DataSource.createTaskList())
                 .subscribeOn(Schedulers.io())
                 .filter {
@@ -65,7 +74,6 @@ class RxJavaActivity : AppCompatActivity() {
             }
 
         })
-
     }
 
     private fun createObservable() {
