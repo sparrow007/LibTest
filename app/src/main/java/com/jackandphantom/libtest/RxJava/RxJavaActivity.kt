@@ -39,136 +39,25 @@ class RxJavaActivity : AppCompatActivity() {
         textView = findViewById(R.id.text_view)
         editText = findViewById(R.id.edit_view)
         button = findViewById(R.id.button)
-        //Buffer operator
-        Observable.just("a", "b", "c", "d", "e", "f", "g")
-                .buffer(2)
-                .subscribe(object:Observer<List<String>>{
-                    override fun onSubscribe(d: Disposable?) {
-                        Log.d(TAG, "onSubscribe: ")
-                    }
 
-                    override fun onNext(t: List<String>) {
-                        Log.d(TAG, "onNext: $t")
-                    }
-
-                    override fun onError(e: Throwable?) {
-                        Log.d(TAG, "onError: $e")
-                    }
-
-                    override fun onComplete() {
-                        Log.d(TAG, "onComplete: ")
-                    }
-
-                })
+        getOriginalObservable().map {
+            it * 2
+        }.subscribe {
+            Log.d(TAG, "onNext $it")
+        }
 
 
     }
 
-    private fun justObservable() {
-        Observable.just(arrayOf("a", "b", "c", "d", "e", "f", "g", "h"), arrayOf("ankit", "supercool"))
-                .subscribe(object:Observer<Array<String>>{
-                    override fun onSubscribe(d: Disposable?) {
-                        Log.d(TAG, "onSubscribe: ")
-                    }
+    private fun getOriginalObservable(): Observable<Int> {
+        val list = arrayListOf(1,2,3,4,5,6,7,8,9)
 
-                    override fun onNext(t: Array<String>?) {
-                        Log.d(TAG, "onNext: ${Arrays.toString(t)}")
-                    }
-
-                    override fun onError(e: Throwable?) {
-                        Log.d(TAG, "onError: $e")
-                    }
-
-                    override fun onComplete() {
-                        Log.d(TAG, "onComplete: ")
-                    }
-
-                })
-    }
-
-    private fun intervalObservable() {
-        Observable.interval(1, TimeUnit.SECONDS)
-                .subscribe(object : Observer<Long> {
-                    override fun onSubscribe(d: Disposable?) {
-                        Log.d(TAG, "onSubscribe: ")
-                    }
-
-                    override fun onNext(t: Long?) {
-                        Log.d(TAG, "onNext: $t")
-                    }
-
-                    override fun onError(e: Throwable?) {
-                        Log.d(TAG, "onError: $e")
-                    }
-
-                    override fun onComplete() {
-                        Log.d(TAG, "onComplete: ")
-                    }
-                })
-    }
-
-    private fun deferObservable() {
-        val defer = DeferRxJava()
-        val observValue = defer.valueObservable()
-        defer.value = "Ankit"
-        observValue.subscribe(System.out::println)
-    }
-
-    private fun taskObservable() {
-        val taskObservable = Observable.fromIterable(DataSource.createTaskList())
-                .subscribeOn(Schedulers.io())
-                .filter {
-
-                    Log.e(TAG, "Subscribe On : "+ Thread.currentThread().name )
-                    Thread.sleep(500)
-                    it.isComplete
-                }
-                .observeOn(AndroidSchedulers.mainThread())
-
-        taskObservable.subscribe(object : Observer<Task> {
-            override fun onSubscribe(d: Disposable?) {
-                Log.e(TAG, "onSubscribe: $d")
+        return Observable.create {
+            for (data in list) {
+                it.onNext(data)
             }
-
-            override fun onNext(t: Task?) {
-                Log.e(TAG, "onNext: ${Thread.currentThread().name}")
-                Log.e(TAG, "onNext: $t ")
-            }
-
-            override fun onError(e: Throwable?) {
-                Log.e(TAG, "onError: ", e)
-            }
-
-            override fun onComplete() {
-                Log.e(TAG, "onComplete: is called")
-            }
-
-        })
-    }
-
-    private fun createObservable() {
-        observable = Observable.create {
-            it.onNext(editText.text.toString())
             it.onComplete()
-
-        }
-
-        observer = object : Observer<String> {
-            override fun onSubscribe(d: Disposable?) {
-            }
-
-            override fun onNext(t: String?) {
-                textView.text = t
-            }
-
-            override fun onError(e: Throwable?) {
-
-            }
-
-            override fun onComplete() {
-
-            }
-
         }
     }
+
 }
